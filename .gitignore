@@ -3,3 +3,4 @@
 !.env.example
 !.sequelizerc
 /server/node_modules/
+/server/public/
