@@ -7,7 +7,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       heroId: {
         field: 'hero_id',
@@ -16,11 +16,11 @@ module.exports = {
         references: {
           model: {
             tableName: 'heroes',
-            key: 'id'
+            key: 'id',
           },
         },
         onDelete: 'cascade',
-        onUpdate: 'cascade'
+        onUpdate: 'cascade',
       },
       powerId: {
         field: 'power_id',
@@ -29,20 +29,22 @@ module.exports = {
         references: {
           model: {
             tableName: 'powers',
-            key: 'id'
+            key: 'id',
           },
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       createdAt: {
         field: 'created_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         field: 'updated_at',
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsToMany(Power, {
         through: 'powers_to_heroes',
+        as: 'powers',
         foreignKey: 'heroId',
       });
     }
@@ -27,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         field: 'full_name',
         type: DataTypes.STRING,
         allowNull: false,
+        unique:true,
         validate: {
           notNull: true,
         },

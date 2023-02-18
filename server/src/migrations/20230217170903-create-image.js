@@ -7,35 +7,37 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       imagePath: {
         field: 'image_path',
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      heroId:  {
+      heroId: {
         field: 'hero_id',
         type: Sequelize.INTEGER,
         references: {
           model: {
             tableName: 'heroes',
-            key: 'id'
-          }
-        }
+            key: 'id',
+          },
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       createdAt: {
         field: 'created_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         field: 'updated_at',
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('images');
-  }
+  },
 };

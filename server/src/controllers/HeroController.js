@@ -10,6 +10,7 @@ class HeroController {
       next(error);
     }
   }
+
   async updateHero(req, res, next) {
     try {
       const { body } = req;
@@ -25,17 +26,18 @@ class HeroController {
     try {
       const { heroInstance } = req;
       await heroInstance.destroy();
-      return res.status(200).send(`Hero successfully deleted!`);
+      return res.status(200).send({ message: `Hero successfully deleted!` });
     } catch (error) {
       next(error);
     }
   }
+
   async getHero(req, res, next) {
     try {
       const { heroInstance } = req;
       const images = await heroInstance.getImages();
       const powers = await heroInstance.getPowers();
-      return res.status(200).send({ data: { heroInstance, images, powers } });
+      return res.status(200).send({ data: {heroInstance, images, powers} });
     } catch (error) {
       next(error);
     }
@@ -50,6 +52,10 @@ class HeroController {
             model: Image,
             as: 'images',
           },
+          {
+            model: Power,
+            as: 'powers',
+          },
         ],
         ...pagination,
       });
@@ -59,25 +65,23 @@ class HeroController {
     }
   }
 
-  async addImagesHero(req, res, next) {
+  async addImagesToHero(req, res, next) {
     try {
       const { id } = req.heroInstance;
       if (req.files) {
         req.files.forEach(({ filename }) => Image.create({ imagePath: filename, heroId: id }));
       }
-      return res.status(200).send();
+      return res.status(200).send({ message: `Image successfully added to hero!` });
     } catch (error) {
       next(error);
     }
   }
 
-  async addPowersHero(req, res, next) {
+  async addPowerToHero(req, res, next) {
     try {
-      const { heroInstance } = req;
-      const { body } = req;
-      const power = await Power.create(body);
-      await heroInstance.addPower(power);
-      return res.status(200).send();
+      const { heroInstance, powerInstance } = req;
+      await heroInstance.addPower(powerInstance);
+      return res.status(200).send({ message: `Power successfully added to hero!` });
     } catch (error) {
       next(error);
     }

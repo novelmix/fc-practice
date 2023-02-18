@@ -18,6 +18,7 @@ module.exports = {
         field: 'full_name',
         type: Sequelize.STRING,
         allowNull: false,
+        unique:true,
       },
       description: {
         type: Sequelize.TEXT

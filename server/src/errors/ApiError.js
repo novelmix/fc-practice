@@ -6,6 +6,10 @@ class ApiError extends Error {
   static NotFound(message) {
     return new this(404, message);
   }
+
+  static Conflict(message) {
+    return new this(409, message);
+  }
 }
 
 module.exports = ApiError;

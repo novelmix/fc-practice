@@ -3,4 +3,7 @@
 !.env.example
 !.sequelizerc
 /server/node_modules/
-/server/public/
+
+# не ігнорив аби ви не створювали самостійно, аби захочете запускати http
+!/server/public/images/
+!.env

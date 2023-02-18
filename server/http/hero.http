@@ -1,0 +1,39 @@
+### POST create
+POST http://localhost:7000/api/hero HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "Man of Mystery (Danger)",
+  "fullName": "Austin Powers",
+  "description": "In Austin Powers: Man of Mystery International, Austin and Doctor Evil wake up after thirty years of cryogenic freezing. While continuing to incorporate cultural elements from the 1960s and 1970s, Austin Powers: The Spy Who Seduced Me and Austin Powers: Goldmember feature time travel as a plot device and deliberately ignore contradictions. A proposed fourth film has reportedly been in development since 2005, but has since stalled.",
+  "slogan": "Oh, behave!"
+}
+
+### :heroID update
+PUT http://localhost:7000/api/hero/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nickname": "Man of Mystery (Danger)",
+  "fullName": "Austin Powers",
+  "description": "In Austin Powers: Man of Mystery International, Austin and Doctor Evil wake up after thirty years of cryogenic freezing. While continuing to incorporate cultural elements from the 1960s and 1970s, Austin Powers: The Spy Who Seduced Me and Austin Powers: Goldmember feature time travel as a plot device and deliberately ignore contradictions. A proposed fourth film has reportedly been in development since 2005, but has since stalled.",
+  "slogan": "Oh, behave!"
+}
+
+### :heroID delete
+DELETE http://localhost:7000/api/hero/2 HTTP/1.1
+Content-Type: application/json
+
+### :heroId :powerName addpower
+POST http://localhost:7000/api/hero/1/danger HTTP/1.1
+Content-Type: application/json 
+
+### :heroId get one hero
+GET http://localhost:7000/api/hero/1 HTTP/1.1
+Content-Type: application/json
+
+### get all hero + pagination
+GET http://localhost:7000/api/hero HTTP/1.1
+Content-Type: application/json
+
+### add image test for postman (hero_image)
